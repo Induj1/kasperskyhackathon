@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FAQItem from '@/components/FAQItem';
@@ -9,15 +9,17 @@ import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 
 const FAQ = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   const generalFaqs = [
     {
-      question: "What is the Kaspersky Cybersecurity Hackathon?",
-      answer: "The Kaspersky Cybersecurity Hackathon is a 48-hour competition organized by ACM MIT-BLR in collaboration with Kaspersky. Participants work in teams to develop innovative solutions to real-world cybersecurity challenges.",
+      question: "What is the Kaspersky Academy Pan-India Hackathon?",
+      answer: "The Kaspersky Academy Pan-India Hackathon is a 2-day competition organized in collaboration with Kaspersky. Participants work in teams to develop innovative solutions to real-world cybersecurity challenges.",
       value: "general-1"
     },
     {
       question: "When and where will the hackathon take place?",
-      answer: "The hackathon will take place on October 15-16, 2023. It will be conducted online with live streaming of keynotes and presentations.",
+      answer: "The hackathon will take place on July 29-30, 2025 at Manipal Institute of Technology, Bengaluru.",
       value: "general-2"
     },
     {
@@ -68,7 +70,7 @@ const FAQ = () => {
     },
     {
       question: "Will there be technical support during the hackathon?",
-      answer: "Yes, mentors and technical experts from Kaspersky and ACM MIT-BLR will be available throughout the hackathon to help with technical issues and provide guidance.",
+      answer: "Yes, mentors and technical experts from Kaspersky will be available throughout the hackathon to help with technical issues and provide guidance.",
       value: "tech-4"
     }
   ];
@@ -86,7 +88,7 @@ const FAQ = () => {
     },
     {
       question: "Do we retain the intellectual property rights to our project?",
-      answer: "Yes, teams retain the intellectual property rights to their projects. However, by participating, you grant Kaspersky and ACM MIT-BLR the right to showcase your project for promotional purposes.",
+      answer: "Yes, teams retain the intellectual property rights to their projects. However, by participating, you grant Kaspersky the right to showcase your project for promotional purposes.",
       value: "submission-3"
     }
   ];
@@ -94,12 +96,12 @@ const FAQ = () => {
   const prizeFaqs = [
     {
       question: "What are the prizes for winning teams?",
-      answer: "Each track has its own set of prizes: First place: $5,000, Second place: $3,000, Third place: $2,000. Additionally, there are special prizes for the most innovative solution, best technical implementation, and audience favorite.",
+      answer: "Winners will receive Kaspersky xTraining Courses worth up to $2,500 and cash prizes. Specific prize amounts will be announced soon.",
       value: "prize-1"
     },
     {
-      question: "Are there any internship opportunities for participants?",
-      answer: "Yes, Kaspersky will offer internship opportunities to selected participants based on their performance during the hackathon.",
+      question: "Are there any additional opportunities for participants?",
+      answer: "Yes, Kaspersky may offer additional opportunities to selected participants based on their performance during the hackathon.",
       value: "prize-2"
     },
     {
@@ -108,6 +110,32 @@ const FAQ = () => {
       value: "prize-3"
     }
   ];
+
+  // Filter FAQs based on search query
+  const filterFaqs = (faqs) => {
+    if (!searchQuery) return faqs;
+    return faqs.filter(faq => 
+      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  };
+
+  const filteredGeneralFaqs = filterFaqs(generalFaqs);
+  const filteredTeamFaqs = filterFaqs(teamFaqs);
+  const filteredTechnicalFaqs = filterFaqs(technicalFaqs);
+  const filteredSubmissionFaqs = filterFaqs(submissionFaqs);
+  const filteredPrizeFaqs = filterFaqs(prizeFaqs);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const hasResults = 
+    filteredGeneralFaqs.length > 0 || 
+    filteredTeamFaqs.length > 0 || 
+    filteredTechnicalFaqs.length > 0 || 
+    filteredSubmissionFaqs.length > 0 || 
+    filteredPrizeFaqs.length > 0;
 
   return (
     <>
@@ -118,7 +146,7 @@ const FAQ = () => {
             <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-center glow-text">Frequently Asked Questions</h1>
               <p className="text-xl text-gray-300 text-center mb-8">
-                Find answers to common questions about the Kaspersky Cybersecurity Hackathon.
+                Find answers to common questions about the Kaspersky Academy Pan-India Hackathon.
               </p>
               
               <div className="relative mb-12">
@@ -126,80 +154,105 @@ const FAQ = () => {
                   type="text" 
                   placeholder="Search for answers..." 
                   className="pl-10"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
                 />
                 <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
               </div>
               
+              {!hasResults && searchQuery && (
+                <div className="text-center mb-8 p-4 border border-cyber-green/20 rounded-md">
+                  <p className="text-gray-300">No results found for "{searchQuery}"</p>
+                  <Button 
+                    variant="link" 
+                    className="text-cyber-green mt-2"
+                    onClick={() => setSearchQuery('')}
+                  >
+                    Clear search
+                  </Button>
+                </div>
+              )}
+              
               <div className="space-y-8">
-                <div>
-                  <h2 className="text-2xl font-bold mb-4 text-cyber-green">General Questions</h2>
-                  <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
-                    {generalFaqs.map((faq) => (
-                      <FAQItem 
-                        key={faq.value}
-                        question={faq.question}
-                        answer={faq.answer}
-                        value={faq.value}
-                      />
-                    ))}
-                  </Accordion>
-                </div>
+                {filteredGeneralFaqs.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-cyber-green">General Questions</h2>
+                    <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
+                      {filteredGeneralFaqs.map((faq) => (
+                        <FAQItem 
+                          key={faq.value}
+                          question={faq.question}
+                          answer={faq.answer}
+                          value={faq.value}
+                        />
+                      ))}
+                    </Accordion>
+                  </div>
+                )}
                 
-                <div>
-                  <h2 className="text-2xl font-bold mb-4 text-cyber-green">Team & Registration</h2>
-                  <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
-                    {teamFaqs.map((faq) => (
-                      <FAQItem 
-                        key={faq.value}
-                        question={faq.question}
-                        answer={faq.answer}
-                        value={faq.value}
-                      />
-                    ))}
-                  </Accordion>
-                </div>
+                {filteredTeamFaqs.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-cyber-green">Team & Registration</h2>
+                    <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
+                      {filteredTeamFaqs.map((faq) => (
+                        <FAQItem 
+                          key={faq.value}
+                          question={faq.question}
+                          answer={faq.answer}
+                          value={faq.value}
+                        />
+                      ))}
+                    </Accordion>
+                  </div>
+                )}
                 
-                <div>
-                  <h2 className="text-2xl font-bold mb-4 text-cyber-green">Technical Questions</h2>
-                  <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
-                    {technicalFaqs.map((faq) => (
-                      <FAQItem 
-                        key={faq.value}
-                        question={faq.question}
-                        answer={faq.answer}
-                        value={faq.value}
-                      />
-                    ))}
-                  </Accordion>
-                </div>
+                {filteredTechnicalFaqs.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-cyber-green">Technical Questions</h2>
+                    <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
+                      {filteredTechnicalFaqs.map((faq) => (
+                        <FAQItem 
+                          key={faq.value}
+                          question={faq.question}
+                          answer={faq.answer}
+                          value={faq.value}
+                        />
+                      ))}
+                    </Accordion>
+                  </div>
+                )}
                 
-                <div>
-                  <h2 className="text-2xl font-bold mb-4 text-cyber-green">Submission & Judging</h2>
-                  <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
-                    {submissionFaqs.map((faq) => (
-                      <FAQItem 
-                        key={faq.value}
-                        question={faq.question}
-                        answer={faq.answer}
-                        value={faq.value}
-                      />
-                    ))}
-                  </Accordion>
-                </div>
+                {filteredSubmissionFaqs.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-cyber-green">Submission & Judging</h2>
+                    <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
+                      {filteredSubmissionFaqs.map((faq) => (
+                        <FAQItem 
+                          key={faq.value}
+                          question={faq.question}
+                          answer={faq.answer}
+                          value={faq.value}
+                        />
+                      ))}
+                    </Accordion>
+                  </div>
+                )}
                 
-                <div>
-                  <h2 className="text-2xl font-bold mb-4 text-cyber-green">Prizes & Recognition</h2>
-                  <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
-                    {prizeFaqs.map((faq) => (
-                      <FAQItem 
-                        key={faq.value}
-                        question={faq.question}
-                        answer={faq.answer}
-                        value={faq.value}
-                      />
-                    ))}
-                  </Accordion>
-                </div>
+                {filteredPrizeFaqs.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl font-bold mb-4 text-cyber-green">Prizes & Recognition</h2>
+                    <Accordion type="single" collapsible className="border border-cyber-green/20 rounded-md overflow-hidden">
+                      {filteredPrizeFaqs.map((faq) => (
+                        <FAQItem 
+                          key={faq.value}
+                          question={faq.question}
+                          answer={faq.answer}
+                          value={faq.value}
+                        />
+                      ))}
+                    </Accordion>
+                  </div>
+                )}
               </div>
               
               <div className="mt-16 p-6 bg-cyber-darker rounded-md border border-cyber-green/20 text-center">
@@ -208,7 +261,7 @@ const FAQ = () => {
                   If you couldn't find the information you're looking for, please don't hesitate to contact us.
                 </p>
                 <Button asChild>
-                  <a href="mailto:hackathon@acmmit.org">Contact Us</a>
+                  <a href="mailto:hackathon@kaspersky.com">Contact Us</a>
                 </Button>
               </div>
             </div>

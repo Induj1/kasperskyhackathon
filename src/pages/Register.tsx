@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -29,6 +28,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
+// Update the schema to accept boolean instead of literal true
 const individualFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
@@ -39,11 +39,14 @@ const individualFormSchema = z.object({
   skills: z.string().min(10, { message: 'Please describe your skills (min 10 characters).' }),
   motivation: z.string().min(10, { message: 'Please share your motivation (min 10 characters).' }),
   lookingForTeam: z.boolean().default(false),
-  termsAccepted: z.literal(true, {
-    errorMap: () => ({ message: 'You must accept the terms and conditions.' }),
-  }),
+  // Change from z.literal(true) to z.boolean() with refinement
+  termsAccepted: z.boolean()
+    .refine(val => val === true, {
+      message: 'You must accept the terms and conditions.',
+    }),
 });
 
+// Update the team schema similarly
 const teamFormSchema = z.object({
   teamName: z.string().min(2, { message: 'Team name must be at least 2 characters.' }),
   teamSize: z.string({ required_error: 'Please select team size.' }),
@@ -54,9 +57,11 @@ const teamFormSchema = z.object({
   track: z.string({ required_error: 'Please select a track.' }),
   teamMembers: z.string().min(10, { message: 'Please provide team members\' details.' }),
   projectIdea: z.string().min(10, { message: 'Please describe your project idea briefly.' }),
-  termsAccepted: z.literal(true, {
-    errorMap: () => ({ message: 'You must accept the terms and conditions.' }),
-  }),
+  // Change from z.literal(true) to z.boolean() with refinement
+  termsAccepted: z.boolean()
+    .refine(val => val === true, {
+      message: 'You must accept the terms and conditions.',
+    }),
 });
 
 type IndividualFormValues = z.infer<typeof individualFormSchema>;
@@ -75,7 +80,7 @@ const Register = () => {
       skills: '',
       motivation: '',
       lookingForTeam: false,
-      termsAccepted: false,
+      termsAccepted: false, // Now this is valid since termsAccepted is a boolean
     },
   });
 
@@ -89,7 +94,7 @@ const Register = () => {
       institution: '',
       teamMembers: '',
       projectIdea: '',
-      termsAccepted: false,
+      termsAccepted: false, // Now this is valid since termsAccepted is a boolean
     },
   });
 

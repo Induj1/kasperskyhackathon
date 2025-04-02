@@ -9,38 +9,30 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const Index = () => {
-  // Set target date for the hackathon (2 months from now)
-  const targetDate = new Date();
-  targetDate.setMonth(targetDate.getMonth() + 2);
+  // Set target date for the hackathon (July 29-30, 2025)
+  const targetDate = new Date('July 29, 2025');
 
   const tracks = [
     {
-      title: "Malware Detection",
-      description: "Create innovative solutions to detect and prevent malware threats using machine learning and AI.",
-      prize: "$5,000",
-      difficulty: "Intermediate" as const,
+      title: "The Transformation of ICS and Cyber Threats",
+      description: "Explore the security challenges in Industrial Control Systems (ICS) as they transition from standalone to interconnected components of critical infrastructure.",
+      prize: "Kaspersky xTraining Courses",
+      difficulty: "Advanced" as const,
       icon: <Shield size={24} />
     },
     {
-      title: "Blockchain Security",
-      description: "Develop secure blockchain applications or tools to identify vulnerabilities in existing chains.",
-      prize: "$3,000",
-      difficulty: "Advanced" as const,
+      title: "AI vs AI – Detecting Deepfake & Misinformation",
+      description: "Combat AI-generated misinformation and deepfakes used for political manipulation, social engineering, financial scams, and cyber warfare.",
+      prize: "Kaspersky xTraining Courses",
+      difficulty: "Intermediate" as const,
       icon: <BookLock size={24} />
     },
     {
-      title: "Secure Coding",
-      description: "Build tools to help developers write more secure code and identify vulnerabilities early.",
-      prize: "$2,500",
-      difficulty: "Beginner" as const,
-      icon: <Code size={24} />
-    },
-    {
-      title: "IoT Security",
-      description: "Create solutions for securing the Internet of Things devices and networks from cyber threats.",
-      prize: "$4,000",
+      title: "Trapping the Honey Trapper",
+      description: "Develop solutions to counter social media honey traps targeting military personnel, government officials, and corporate executives.",
+      prize: "Kaspersky xTraining Courses",
       difficulty: "Intermediate" as const,
-      icon: <Cpu size={24} />
+      icon: <Code size={24} />
     }
   ];
 
@@ -54,15 +46,16 @@ const Index = () => {
             <div className="text-center">
               <div className="inline-block mx-auto">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight glow-text animate-pulse-glow">
-                  Kaspersky Cybersecurity Hackathon
+                  Kaspersky Academy Pan-India Hackathon
                 </h1>
               </div>
               <p className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
-                Secure the Future: AI in Cybersecurity
+                29-30 July 2025 • Manipal Institute of Technology, Bengaluru
               </p>
               <p className="text-gray-400 mb-10 max-w-2xl mx-auto">
-                Join the elite competition organized by ACM MIT-BLR and sponsored by Kaspersky. 
-                Showcase your skills, learn from industry experts, and win exciting prizes.
+                The digital world is evolving at lightning speed—but so are the threats that lurk in the shadows. 
+                From emerging cyber threats to disinformation and deepfakes, the battleground of cybersecurity is more intense than ever.
+                This is where YOU step in.
               </p>
               
               <CountdownTimer targetDate={targetDate} />
@@ -85,10 +78,9 @@ const Index = () => {
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 glow-text">About The Hackathon</h2>
               <p className="text-gray-300">
-                The Kaspersky Cybersecurity Hackathon brings together brilliant minds to 
-                tackle the most pressing challenges in cybersecurity. With the rise of AI 
-                and machine learning, we're looking for innovative solutions that can help 
-                secure our digital future.
+                Over the next few months, the brightest student minds in tech will unite to tackle real-world security challenges, 
+                push the boundaries of innovation, and showcase their prowess in cybersecurity. Whether you're an aspiring cyber defender, 
+                a coder with a cause, or a tech enthusiast ready to disrupt the disruptors, this is your moment to shine.
               </p>
             </div>
             
@@ -127,8 +119,7 @@ const Index = () => {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Exclusive Opportunities</h3>
                     <p className="text-gray-400">
-                      Top performers will receive internship opportunities at Kaspersky and 
-                      partner organizations.
+                      Top performers will receive Kaspersky xTraining courses worth up to $2,500 and cash prizes.
                     </p>
                   </div>
                 </div>
@@ -163,12 +154,12 @@ const Index = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 glow-text">Hackathon Tracks</h2>
               <p className="text-gray-300 max-w-2xl mx-auto">
-                Choose from four exciting tracks, each focused on a critical area of cybersecurity.
+                Choose from three exciting tracks, each focused on a critical area of cybersecurity.
                 Teams can participate in any one track.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {tracks.map((track) => (
                 <TrackCard 
                   key={track.title}
@@ -195,10 +186,10 @@ const Index = () => {
         <section className="py-16 bg-cyber-gray/30">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-4 glow-text">Ready to Secure the Future?</h2>
+              <h2 className="text-3xl font-bold mb-4 glow-text">Ready to Outsmart Cyber Adversaries?</h2>
               <p className="text-gray-300 mb-8">
-                Join hundreds of cybersecurity enthusiasts and professionals for 
-                an unforgettable hackathon experience. Registration is free but spots are limited.
+                Are you ready to outsmart cyber adversaries, expose digital deception, and build the future of security? 
+                Join hundreds of cybersecurity enthusiasts for an unforgettable hackathon experience.
               </p>
               <Button size="lg" asChild>
                 <Link to="/register">Register Now</Link>
