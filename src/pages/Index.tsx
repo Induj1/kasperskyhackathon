@@ -46,13 +46,19 @@ const Index = () => {
             <div className="text-center">
               {/* Organizer Logos */}
               <div className="flex justify-center items-center gap-6 mb-8">
-                <div className="flex items-center">
+                <div className="flex items-center flex-wrap justify-center gap-4">
+                  <img 
+                    src="/lovable-uploads/7c59e023-9df8-4cb7-b8b9-5d3e5fd0070b.png" 
+                    alt="MAHE Logo" 
+                    className="h-16 md:h-20"
+                  />
+                  <span className="text-2xl mx-1 text-cyber-green">×</span>
                   <img 
                     src="/lovable-uploads/19569e89-acb1-4e1c-b3fa-f038f9ad8783.png" 
                     alt="ACM MIT Bengaluru Logo" 
                     className="h-16 md:h-20"
                   />
-                  <span className="text-2xl mx-3 text-cyber-green">×</span>
+                  <span className="text-2xl mx-1 text-cyber-green">×</span>
                   <div className="h-16 md:h-20 flex items-center">
                     <img 
                       src="/lovable-uploads/5a7ed1a5-1689-4027-ac9b-e3c11850900a.png" 
