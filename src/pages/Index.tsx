@@ -46,7 +46,7 @@ const Index = () => {
             <div className="text-center">
               <div className="inline-block mx-auto">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight glow-text animate-pulse-glow">
-                  Kaspersky Academy Pan-India Hackathon
+                  HackSky: Kaspersky Academy Pan-India Hackathon
                 </h1>
               </div>
               <p className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
@@ -58,7 +58,7 @@ const Index = () => {
                 This is where YOU step in.
               </p>
               
-              <CountdownTimer targetDate={targetDate} />
+              <CountdownTimer targetDate={targetDate} initialDays={81} />
               
               <div className="flex flex-wrap justify-center gap-4 mt-6">
                 <Button size="lg" asChild>
@@ -189,7 +189,7 @@ const Index = () => {
               <h2 className="text-3xl font-bold mb-4 glow-text">Ready to Outsmart Cyber Adversaries?</h2>
               <p className="text-gray-300 mb-8">
                 Are you ready to outsmart cyber adversaries, expose digital deception, and build the future of security? 
-                Join hundreds of cybersecurity enthusiasts for an unforgettable hackathon experience.
+                Join hundreds of cybersecurity enthusiasts for an unforgettable HackSky experience.
               </p>
               <Button size="lg" asChild>
                 <Link to="/register">Register Now</Link>

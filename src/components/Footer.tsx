@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-4">
-            <h3 className="text-xl font-bold glow-text">Kaspersky Cybersecurity Hackathon</h3>
+            <h3 className="text-xl font-bold glow-text">HackSky</h3>
             <p className="text-gray-400">
               Organized by ACM MIT-BLR. Join us for an exciting event focused on the future of cybersecurity.
             </p>
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-10 pt-6 border-t border-cyber-green/10 text-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Kaspersky Cybersecurity Hackathon. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} HackSky. All rights reserved.</p>
           <p className="mt-2">
             <Link to="/privacy" className="hover:text-cyber-green">Privacy Policy</Link> | <Link to="/terms" className="hover:text-cyber-green">Terms of Service</Link>
           </p>

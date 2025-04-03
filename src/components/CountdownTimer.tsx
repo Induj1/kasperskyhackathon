@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 
 interface CountdownProps {
   targetDate: Date;
+  initialDays?: number; // Add optional prop to override calculated days
 }
 
-const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
+const CountdownTimer: React.FC<CountdownProps> = ({ targetDate, initialDays }) => {
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
+    days: initialDays || 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -17,6 +18,15 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
+      // If initialDays is provided, use it instead of calculating
+      if (initialDays !== undefined) {
+        setTimeLeft(prev => ({
+          ...prev,
+          days: initialDays
+        }));
+        return;
+      }
+      
       const difference = targetDate.getTime() - new Date().getTime();
       
       if (difference <= 0) {
@@ -37,7 +47,7 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
     const timerId = setInterval(calculateTimeLeft, 1000);
     
     return () => clearInterval(timerId);
-  }, [targetDate]);
+  }, [targetDate, initialDays]);
   
   const timeUnits = [
     { label: 'Days', value: timeLeft.days },
@@ -49,7 +59,7 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
   if (isExpired) {
     return (
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-cyber-green">Hackathon is Live!</h2>
+        <h2 className="text-2xl font-bold text-cyber-green">HackSky is Live!</h2>
         <p className="text-gray-400">The event has started</p>
       </div>
     );

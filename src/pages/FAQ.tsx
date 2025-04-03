@@ -13,8 +13,8 @@ const FAQ = () => {
 
   const generalFaqs = [
     {
-      question: "What is the Kaspersky Academy Pan-India Hackathon?",
-      answer: "The Kaspersky Academy Pan-India Hackathon is a 2-day competition organized in collaboration with Kaspersky. Participants work in teams to develop innovative solutions to real-world cybersecurity challenges.",
+      question: "What is HackSky?",
+      answer: "HackSky is a 2-day competition organized by Kaspersky Academy in collaboration with ACM MIT-BLR. Participants work in teams to develop innovative solutions to real-world cybersecurity challenges.",
       value: "general-1"
     },
     {
@@ -146,7 +146,7 @@ const FAQ = () => {
             <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-center glow-text">Frequently Asked Questions</h1>
               <p className="text-xl text-gray-300 text-center mb-8">
-                Find answers to common questions about the Kaspersky Academy Pan-India Hackathon.
+                Find answers to common questions about HackSky.
               </p>
               
               <div className="relative mb-12">

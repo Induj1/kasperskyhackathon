@@ -13,15 +13,15 @@ const About = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-center glow-text">About The Hackathon</h1>
+              <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-center glow-text">About HackSky</h1>
               <p className="text-xl text-gray-300 text-center mb-12">
-                Learn more about the Kaspersky Cybersecurity Hackathon, 
+                Learn more about HackSky, 
                 its mission, and what makes it unique.
               </p>
               
               <div className="prose prose-lg prose-invert max-w-none">
                 <p className="text-gray-300">
-                  The Kaspersky Cybersecurity Hackathon, organized by ACM MIT-BLR, 
+                  HackSky, organized by ACM MIT-BLR, 
                   is a premier event for students, professionals, and cybersecurity enthusiasts 
                   to collaborate and develop innovative solutions to real-world security challenges.
                 </p>
@@ -40,7 +40,7 @@ const About = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white">When</h3>
-                      <p className="text-gray-400">October 15-16, 2023</p>
+                      <p className="text-gray-400">July 29-30, 2025</p>
                     </div>
                   </div>
                   
@@ -153,7 +153,7 @@ const About = () => {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6 text-center glow-text">Why Participate?</h2>
               <p className="text-center text-gray-300 mb-10">
-                The Kaspersky Cybersecurity Hackathon offers numerous benefits to participants.
+                HackSky offers numerous benefits to participants.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -164,7 +164,7 @@ const About = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-white">Prizes & Recognition</h3>
                     <p className="text-gray-300">
-                      Win cash prizes up to $5,000, Kaspersky product licenses, and recognition 
+                      Win cash prizes, Kaspersky product licenses, and recognition 
                       from industry leaders.
                     </p>
                   </div>
@@ -218,7 +218,7 @@ const About = () => {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6 text-center glow-text">Organizers & Sponsors</h2>
               <p className="text-center text-gray-300 mb-10">
-                The Kaspersky Cybersecurity Hackathon is a collaborative effort between 
+                HackSky is a collaborative effort between 
                 industry leaders and academic institutions.
               </p>
               

@@ -15,13 +15,13 @@ const Schedule = () => {
             <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-center glow-text">Event Schedule</h1>
               <p className="text-xl text-gray-300 text-center mb-12">
-                Explore the complete timeline of the Kaspersky Cybersecurity Hackathon.
+                Explore the complete timeline of HackSky.
               </p>
               
               <Tabs defaultValue="day1" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 mb-8">
-                  <TabsTrigger value="day1">Day 1 (Oct 15)</TabsTrigger>
-                  <TabsTrigger value="day2">Day 2 (Oct 16)</TabsTrigger>
+                  <TabsTrigger value="day1">Day 1 (July 29)</TabsTrigger>
+                  <TabsTrigger value="day2">Day 2 (July 30)</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="day1" className="space-y-6">
