@@ -44,6 +44,25 @@ const Index = () => {
         <section className="relative pt-20 pb-16">
           <div className="container mx-auto px-4 pt-10 sm:pt-16 lg:pt-20">
             <div className="text-center">
+              {/* Organizer Logos */}
+              <div className="flex justify-center items-center gap-6 mb-8">
+                <div className="flex items-center">
+                  <img 
+                    src="/lovable-uploads/19569e89-acb1-4e1c-b3fa-f038f9ad8783.png" 
+                    alt="ACM MIT Bengaluru Logo" 
+                    className="h-16 md:h-20"
+                  />
+                  <span className="text-2xl mx-3 text-cyber-green">×</span>
+                  <div className="h-16 md:h-20 flex items-center">
+                    <img 
+                      src="/lovable-uploads/5a7ed1a5-1689-4027-ac9b-e3c11850900a.png" 
+                      alt="Kaspersky Logo" 
+                      className="h-8 md:h-10"
+                    />
+                  </div>
+                </div>
+              </div>
+              
               <div className="inline-block mx-auto">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight glow-text animate-pulse-glow">
                   HackSky: Kaspersky Academy Pan-India Hackathon

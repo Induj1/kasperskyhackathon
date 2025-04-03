@@ -18,15 +18,6 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate, initialDays }) =
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      // If initialDays is provided, use it instead of calculating
-      if (initialDays !== undefined) {
-        setTimeLeft(prev => ({
-          ...prev,
-          days: initialDays
-        }));
-        return;
-      }
-      
       const difference = targetDate.getTime() - new Date().getTime();
       
       if (difference <= 0) {
@@ -35,7 +26,7 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate, initialDays }) =
       }
       
       // Calculate time units
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const days = initialDays !== undefined ? initialDays : Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
